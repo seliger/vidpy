@@ -382,11 +382,12 @@ class Clip(object):
         args = ['{}={}/{}:{}x{}'.format(*s) for s in sequence]
         args = ';'.join(args)
         self.fx('affine', {
-            'transition.geometry': args,
+            'transition.rect': args,
             'background': 'color:0',
             'transition.repeat_off': 0 if repeat else 1,
             'transition.cycle': cycle,
-            'transition.mirror': 1 if mirror else 0
+            'transition.mirror': 1 if mirror else 0,
+            'use_normalized': 1
         })
         return self
 
