@@ -26,7 +26,7 @@ class Composition(object):
         height (int): Height of output in pixels
     '''
 
-    def __init__(self, clips, bgcolor='#000000', singletrack=False, duration=None, fps=None, width=None, height=None):
+    def __init__(self, clips, bgcolor='#000000', singletrack=False, duration=None, fps=None, width=None, height=None, vcodec=None, acodec=None):
         self.clips = clips
         self.bg = bgcolor
         self.singletrack = singletrack
@@ -61,6 +61,12 @@ class Composition(object):
             profile.set('display_aspect_num', str(self.width))
             profile.set('height', str(self.height))
             profile.set('display_aspect_den', str(self.height))
+
+        if self.vcodec:
+            profile.set('vcodec', str(self.vcodec))
+
+        if self.acodec:
+            profile.set('acodec', str(self.acodec))
 
         return xml
 
